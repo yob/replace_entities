@@ -1,0 +1,52 @@
+== Replace Entities
+
+If you import data from confused sources you may end up with HTMLish entites
+littering your model data. I'm looking at you &reg;
+
+If you don't want them, then replace them with the appropriate UTF-8 character
+before they make it into your database.
+
+
+=== Examples
+
+  class Product < ActiveRecord::Base
+    replace_entities!
+  end
+
+  class Product < ActiveRecord::Base
+    replace_entities!, :except => :title
+  end
+
+  class Product < ActiveRecord::Base
+    replace_entities!, :only => :description
+  end
+
+=== Installation
+
+Option 1. Load the plugin as a gem
+
+  gem install replace_entities
+  add "config.gem 'replace_entities'" to your environment.rb
+
+Option 2. Use the standard Rails plugin install (assuming Rails >= 2.1).
+
+  ./script/plugin install git://github.com/yob/replace_entities.git
+
+=== Caveats
+
+The entities are replaced with UTF-8 characters. If you're not expecting UTF-8
+data, you may end up with invalid strings.
+
+=== Credits
+
+This plugin is essentially a fork of the strip attributes plugin, released
+under the MIT License by Ryan McGeary.
+
+http://github.com/rmm5t/strip_attributes
+
+=== License
+
+Copyright (c) 2007-2008 Ryan McGeary released under the MIT license
+Copyright (c) 2010 James Healy released under the MIT license
+
+http://en.wikipedia.org/wiki/MIT_License
