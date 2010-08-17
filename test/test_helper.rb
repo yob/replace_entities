@@ -5,9 +5,10 @@ require 'active_record'
 PLUGIN_ROOT = File.expand_path(File.join(File.dirname(__FILE__), ".."))
 
 $LOAD_PATH.unshift "#{PLUGIN_ROOT}/lib"
-require "#{PLUGIN_ROOT}/init"
+require "replace_entities"
 
 class ActiveRecord::Base
+  extend ReplaceEntities::ArExtend
   alias_method :save, :valid?
   def self.columns()
     @columns ||= []

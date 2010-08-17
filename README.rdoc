@@ -23,14 +23,24 @@ before they make it into your database.
 
 === Installation
 
-Option 1. Load the plugin as a gem
+1. On rails 2.3
 
-  gem install replace_entities
-  add "config.gem 'replace_entities'" to your environment.rb
+  * gem install strip_control_chars
+  * add the following to your environment.rb
 
-Option 2. Use the standard Rails plugin install (assuming Rails >= 2.1).
+    config.gem 'replace_entities', version => "<2.0"
 
-  ./script/plugin install git://github.com/yob/replace_entities.git
+2. On rails 3
+
+  * gem install strip_control_chars
+  * add the following to your Gemfile
+
+    gem 'replace_entities', ">=2.0"
+
+=== Compatibility
+
+On rails 2.x you must use version 1.x of this gem. On rails 3.x you must use
+version 2.x of this gem.
 
 === Caveats
 
